@@ -85,6 +85,8 @@ class Catology_AI:
         self.WRITE_TO_UI("Catology_AI has started.")
 
         X = np.random.rand(1, 26)  # Single sample, 26 features
+
+
         breeds=self.MODEL_AI.WHAT_BREED_IT_IS(X)
         self.WRITE_TO_UI(f"Breeds are{breeds}")
 

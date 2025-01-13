@@ -92,7 +92,7 @@ class CATOLOGY_AI_MODEL:
     def predict(self,X):
         a1, a2, a3, a4, a5 = self.forward_pass(X, self.W1, self.b1, self.W2, self.b2, self.W3, self.b3, self.W4, self.b4, self.W5, self.b5)
         probabilities = self.softmax(a5)
-        predicted_classes = np.argmax(probabilities, axis=1)
+        predicted_classes = np.argmax(probabilities)
         return predicted_classes
 
     def WHAT_BREED_IT_IS(self,CHARACTERISTICS):
