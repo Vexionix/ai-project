@@ -65,17 +65,17 @@ class Catology_AI:
         return text
 
     def WRITE_TO_UI(self, text: str):
-        self.GUI_INSTANCE.display_message(text)
+        self.GUI_INSTANCE.display_message_AI(text)
 
     def PROCESS_TASKS(self):
-        self.GUI_INSTANCE.display_message("Catology_AI has started.")
+        self.WRITE_TO_UI("Catology_AI has started.")
 
         while self.running:
             try:
                 print("AI_WORKER_AI: Waiting for message...")
                 text = self.GET_TEXT() ## this method is blocking the thread. we do not use nowait on the queue.
                 ## blocking is good because it saves ressources for the os stand-of-view.
-                self.GUI_INSTANCE.display_message(f"AI has got: {text}")
+                self.WRITE_TO_UI(f"AI has got: {text}")
 
                 language_for_this_turn = DECIDE_LANGUAGE(text)
                 self.GUI_INSTANCE.display_message(f"LANGUAGE: {language_for_this_turn}")
@@ -93,7 +93,7 @@ class Catology_AI:
                 TOKENS = [token.lower() for token in TOKENS if any(c.isalpha() for c in token)]
                 print(f"TOKENS: {TOKENS}")
 
-                self.GUI_INSTANCE.display_message(f"TOKENS: {TOKENS}")
+                self.WRITE_TO_UI(f"TOKENS: {TOKENS}")
 
 
 
@@ -107,4 +107,4 @@ class Catology_AI:
             except KeyboardInterrupt:
                 self.running = False
                 break
-        self.GUI_INSTANCE.display_message("Catology_AI has ended")
+        self.WRITE_TO_UI("Catology_AI has ended")

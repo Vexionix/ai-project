@@ -44,6 +44,12 @@ class CATOLOGY_UI:
 
         # Prevent the default behavior of pressing Enter (which would normally insert a newline)
         return "break"
+    def display_message_AI(self, message):
+        """Function to display the sent message in the chat window."""
+        self.chat_window.config(state=tk.NORMAL)  # Enable the chat window for editing
+        self.chat_window.insert(tk.END, f"AI: {message}\n")  # Insert the message
+        self.chat_window.config(state=tk.DISABLED)  # Disable the chat window again
+        self.chat_window.yview(tk.END)  # Scroll to the bottom
 
     def display_message(self, message):
         """Function to display the sent message in the chat window."""
