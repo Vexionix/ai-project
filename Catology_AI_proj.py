@@ -1,10 +1,14 @@
 import json
 import queue
 
+import joblib
 import nltk  # utilities
+import numpy as np
 from langdetect import DetectorFactory, detect
 from rake_nltk import Rake
 from translate import Translator
+
+from CATOLOGY_AI import CATOLOGY_AI_MODEL
 
 ##other dependencies
 nltk.download('wordnet')
@@ -56,6 +60,13 @@ class Catology_AI:
         self.MESSAGE_QUEUE = queue.Queue()
 
         self.running = True
+        self.MODEL_AI =None
+
+    def load_model_AI(filename="trained_model.joblib"):
+
+        model = joblib.load(filename)
+        print(f"WORKER: Model loaded from {filename}")
+        return model
 
     def RECEIVE_TEXT(self, text):
         self.MESSAGE_QUEUE.put(text)
@@ -68,7 +79,15 @@ class Catology_AI:
         self.GUI_INSTANCE.display_message_AI(text)
 
     def PROCESS_TASKS(self):
+
+        self.MODEL_AI=CATOLOGY_AI_MODEL("model.joblib",self.GUI_INSTANCE) ## pass.
+
         self.WRITE_TO_UI("Catology_AI has started.")
+
+        X = np.random.rand(1, 26)  # Single sample, 26 features
+        breeds=self.MODEL_AI.WHAT_BREED_IT_IS(X)
+        self.WRITE_TO_UI(f"Breeds are{breeds}")
+
 
         while self.running:
             try:
