@@ -222,7 +222,7 @@ class Catology_AI:
 
     def extract_traits_from_keywords(self, keywords):
         try:
-            client = OpenAI(api_key="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")
+            client = OpenAI(###)
             system_message = "You are a mapping assistant that maps keywords to predefined categories and values."
 
             user_message = f"""
