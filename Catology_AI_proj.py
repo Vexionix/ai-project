@@ -1,9 +1,12 @@
 import json
+import os
 import queue
 
 import joblib
 import nltk  # utilities
 import numpy as np
+from openai import OpenAI
+
 from langdetect import DetectorFactory, detect
 from rake_nltk import Rake
 from translate import Translator
@@ -15,11 +18,11 @@ nltk.download('wordnet')
 nltk.download('omw-1.4')
 nltk.download('punkt')
 nltk.download('punkt_tab')
+from openai import OpenAI
 
 from nltk.corpus import wordnet as WORDNET_EN  # we would like to have access to WordNet Facilities
 
 language = ""  # we do not know the language at start-time:)
-
 
 def DECIDE_LANGUAGE(text):
     try:
@@ -162,7 +165,7 @@ class Catology_AI:
             self.WRITE_TO_UI("Cat doesn't exist")
         else:
             print(self.CATS_DESCRIPTIONS)
-            self.WRITE_TO_UI(f"Generated description: {self.CATS_DESCRIPTIONS[cat_name]}")
+            self.WRITE_TO_UI(f"Generated description: {self.CATS_DESCRIPTIONS[cat_name.lower()]}")
 
 
     def load_model_AI(self,filename="trained_model.joblib"):
@@ -217,6 +220,49 @@ class Catology_AI:
         }
         return feature_indices.get(category, None)
 
+    def extract_traits_from_keywords(self, keywords):
+        try:
+            client = OpenAI(api_key="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")
+            system_message = "You are a mapping assistant that maps keywords to predefined categories and values."
+
+            user_message = f"""
+                    Here is the dictionary defining the categories and their values:
+                    {self.WORD_DICT}
+
+                    These are the keywords describing the cat's traits: {keywords}.
+                    Map each keyword to the most appropriate category and value from the dictionary.
+                    Return the result in a JSON format, where each category is a key and the matched value is its value.
+                    If a keyword does not fit any category, exclude it from the result.
+                """
+
+            response = client.chat.completions.create(
+                model="gpt-3.5-turbo",
+                messages=[
+                    {"role": "system", "content": system_message},
+                    {"role": "user", "content": user_message}
+                ]
+            )
+
+            result = response.choices[0].message.content.strip()
+
+            return json.loads(result)
+
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+            return {}
+
+    def parse_traits(self, traits_text):
+        if isinstance(traits_text, dict):
+            return traits_text
+
+        try:
+            traits_dict = json.loads(traits_text)
+        except json.JSONDecodeError:
+            print("Error: Invalid JSON format")
+            return {}
+
+        return traits_dict
+
     def PROCESS_TASKS(self):
 
         self.MODEL_AI=CATOLOGY_AI_MODEL("model.joblib",self.GUI_INSTANCE) ## pass.
@@ -237,7 +283,7 @@ class Catology_AI:
 
 
 
-
+        iteration=0
         while self.running:
             try:
                 print("AI_WORKER_AI: Waiting for message...")
@@ -272,8 +318,26 @@ class Catology_AI:
                 self.set_features(rake_keywords,DECISION_LANGUAGE,X)
                 print(f"Features vect:{X}")
 
-                if self.ATTRIBUTES_SET<5:
-                    self.WRITE_TO_UI("Can you please tell more about your cat?")
+
+                if TOKENS.__len__()<6:
+                    self.WRITE_TO_UI("Can you please tell more about your cat in your sentence?")
+                    iteration=iteration+1
+                else:
+                    traits_mapping = self.extract_traits_from_keywords(TOKENS)
+                    traits_dict = self.parse_traits(traits_mapping)
+                    print(traits_dict)
+                    for category, trait_value in traits_dict.items():
+                        if category in self.WORD_DICT:
+                            options = self.WORD_DICT[category]
+                            if trait_value in options.values():
+                                category_index = list(self.WORD_DICT.keys()).index(category)
+                                X[0][category_index] = trait_value
+                    print(X)
+                    breeds = self.MODEL_AI.WHAT_BREED_IT_IS(X)
+                    self.WRITE_TO_UI(f"Breed is {breeds}")
+                    X = np.zeros(26)
+                    X = X.reshape(1, 26)
+                    iteration=0
 
 
 

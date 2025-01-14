@@ -1,52 +1,64 @@
 {
   "cat_breeds": [
     {
-      "breed": "Persian",
-      "description": "The Persian cat is known for its long, luxurious coat and sweet, calm temperament. They have round faces with short noses, large eyes, and a sturdy body. Persian cats are affectionate, but they can be a bit reserved and prefer a quiet, calm environment."
+      "breed": "bengal",
+      "description": "Bengal cats are known for their striking, leopard-like coat patterns, which can range from spotted to marbled. They are very active and intelligent, often requiring a lot of stimulation and exercise. Bengals are playful, curious, and can be quite vocal."
     },
     {
-      "breed": "Siamese",
-      "description": "The Siamese cat is one of the oldest and most recognizable breeds. Known for its sleek body, almond-shaped blue eyes, and distinct color points on the ears, face, paws, and tail, they are highly vocal and very social, often bonding deeply with their human companions."
+      "breed": "birman",
+      "description": "The Birman is a medium-sized, elegant cat with a silky coat and striking blue eyes. They have a gentle, affectionate temperament and are often described as 'dog-like' because they enjoy following their owners around and being involved in family activities."
     },
     {
-      "breed": "Maine Coon",
+      "breed": "british",
+      "description": "The British Shorthair is a sturdy, medium-to-large breed known for its round face and plush coat. They come in a variety of colors, but the most famous is the blue (grey). British Shorthairs are calm, independent, and affectionate, making them great companions for families and individuals alike."
+    },
+    {
+      "breed": "chartreux",
+      "description": "The Chartreux is a rare French breed known for its short, dense coat and captivating orange or copper eyes. These cats are quiet, affectionate, and highly intelligent, making them excellent companions for both families and individuals."
+    },
+    {
+      "breed": "european",
+      "description": "The European Shorthair is a natural breed with a short, dense coat that comes in various colors and patterns. They are adaptable, friendly, and low-maintenance, making them wonderful family pets."
+    },
+    {
+      "breed": "maine",
       "description": "The Maine Coon is one of the largest domesticated cat breeds. They have tufted ears, bushy tails, and a thick double coat, making them particularly well-suited for colder climates. They are known for being gentle, friendly, and playful, often referred to as 'gentle giants.'"
     },
     {
-      "breed": "Bengal",
-      "description": "Bengal cats are known for their striking, leopard-like coat patterns, which can range from spotted to marbled. They are very active and intelligent, often requiring a lot of stimulation and exercise. Bengals are playful, curious, and can be quite vocal."
+      "breed": "norwegian",
+      "description": "The Norwegian Forest Cat is a large, sturdy breed with a thick, water-resistant coat. They have tufted ears, bushy tails, and a muscular build. Known for their playful, independent nature, they are also loyal to their families and enjoy outdoor exploration."
+    },
+    {
+      "breed": "beautiful cat",
+      "description": "These cats are often social, playful, and highly affectionate."
+    },
+    {
+      "breed": "Persian",
+      "description": "The Persian cat is known for its long, luxurious coat and sweet, calm temperament. They have round faces with short noses, large eyes, and a sturdy body. Persian cats are affectionate, but they can be a bit reserved and prefer a quiet, calm environment."
     },
     {
       "breed": "Ragdoll",
       "description": "The Ragdoll cat is known for its docile temperament and striking blue eyes. They have semi-long fur and a silky coat, and they tend to go limp when picked up, hence the name 'Ragdoll.' They are affectionate and enjoy being handled, often following their owners around the house."
     },
     {
-      "breed": "Scottish Fold",
-      "description": "The Scottish Fold is a unique breed with a distinct appearance due to its folded ears. These cats are medium-sized with a round face and large, expressive eyes. They are friendly, gentle, and enjoy companionship, often forming strong bonds with their families."
+      "breed": "Savannah",
+      "description": "Savannah cats are a hybrid breed, known for their exotic, wild appearance, reminiscent of a small cheetah. They are highly active, intelligent, and social, often bonding closely with their families."
+    },
+    {
+      "breed": "Siamese",
+      "description": "The Siamese cat is one of the oldest and most recognizable breeds. Known for its sleek body, almond-shaped blue eyes, and distinct color points on the ears, face, paws, and tail, they are highly vocal and very social, often bonding deeply with their human companions."
     },
     {
       "breed": "Sphynx",
       "description": "The Sphynx cat is known for its lack of fur, but it is far from hairless—its skin is soft and warm to the touch. They are friendly, affectionate, and love to be the center of attention. Sphynx cats are active, curious, and enjoy socializing with both people and other pets."
     },
     {
-      "breed": "Abyssinian",
-      "description": "Abyssinians are one of the oldest known cat breeds, characterized by their short, ticked coat that gives them an exotic appearance. They are highly energetic, intelligent, and playful. Abyssinians are often seen exploring their environment, and they love engaging in interactive play."
+      "breed": "Turkish Angora",
+      "description": "The Turkish Angora is a graceful breed with a silky, semi-long coat and striking eyes, often blue, green, or odd-colored. They are playful, intelligent, and affectionate, forming strong bonds with their families."
     },
     {
-      "breed": "British Shorthair",
-      "description": "The British Shorthair is a sturdy, medium-to-large breed known for its round face and plush coat. They come in a variety of colors, but the most famous is the blue (grey). British Shorthairs are calm, independent, and affectionate, making them great companions for families and individuals alike."
-    },
-    {
-      "breed": "Russian Blue",
-      "description": "The Russian Blue is a striking breed with a silvery-blue coat and vivid green eyes. Known for their intelligence and reserved nature, Russian Blues tend to be more independent but also form strong bonds with their owners. They are gentle, quiet, and enjoy a peaceful environment."
-    },
-    {
-      "breed": "Norwegian Forest Cat",
-      "description": "The Norwegian Forest Cat is a large, sturdy breed with a thick, water-resistant coat. They have tufted ears, bushy tails, and a muscular build. Known for their playful, independent nature, they are also loyal to their families and enjoy outdoor exploration."
-    },
-    {
-      "breed": "Birman",
-      "description": "The Birman is a medium-sized, elegant cat with a silky coat and striking blue eyes. They have a gentle, affectionate temperament and are often described as 'dog-like' because they enjoy following their owners around and being involved in family activities."
+      "breed": "Common Cat",
+      "description": "Common cats, often referred to as domestic or mixed-breed cats, come in a wide variety of appearances and temperaments. They are highly adaptable, affectionate, and make wonderful companions for individuals and families alike."
     }
   ]
 }
