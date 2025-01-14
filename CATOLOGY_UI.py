@@ -3,7 +3,7 @@ from threading import Thread
 from tkinter import scrolledtext
 
 from Catology_AI_proj import Catology_AI
-
+# check if the cat is valid
 
 class CATOLOGY_UI:
     def __init__(self):
@@ -27,10 +27,24 @@ class CATOLOGY_UI:
 
         # Button for sending messages (optional, in case you want to keep the button as well)
         self.send_button = tk.Button(self.root, text="Send", width=20, command=self.send_message)
-        self.send_button.pack(pady=10)
+        self.send_button.pack(side=tk.LEFT, padx=10, pady=10)
 
+        # Button for generate description
+        self.generate_description = tk.Button(self.root, text="Generate", width=20, command=self.generate_description)
+        self.generate_description.pack(side=tk.LEFT, padx=10, pady=10)
         self.WORKER_AI = None
         self.thread = None
+
+
+
+    def generate_description(self):
+        """Function to send a message."""
+        message = self.message_entry.get()
+        if message.strip():  # Ensure message is not empty
+            self.display_message(message)
+            self.WORKER_AI.generate(message)
+            self.message_entry.delete(0, tk.END)  # Clear the input field
+
 
     def send_message(self, event=None):
         """Function to send a message."""

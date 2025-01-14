@@ -1,5 +1,7 @@
 import joblib
 import numpy as np
+from numpy.ma.core import true_divide
+
 
 class CATOLOGY_AI_MODEL:
     def __init__(self,fileNameModel,GUI_INSTANCE):
@@ -50,8 +52,12 @@ class CATOLOGY_AI_MODEL:
         11:"Siamese",
         12:"Sphynx",
         13:"Turkish Angora",
-        14:"Unknown"}
+        14:"Common cat"}
 
+    def is_cat(self, cat_name):
+        if cat_name in self.BREED_DICT.values():
+            return True
+        return False
 
     def load_model_AI(self,filename="model.joblib"):
         try:
